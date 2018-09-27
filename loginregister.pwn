@@ -91,7 +91,7 @@ Dialog:DIALOG_REGISTER(playerid, response, listitem, inputtext[])
 	WP_Hash(PlayerInfo[playerid][Password], 129, inputtext); // Hash the password the player has wrote to the register dialog using Whirlpool.
 	mysql_format(Database, query, sizeof(query), "INSERT INTO `users` (`Username`, `Password`, `IP`, `Cash`, `Kills`, `Deaths`) VALUES ('%e', '%e', '%e', 0, 0, 0)", PlayerName[playerid], PlayerInfo[playerid][Password], PlayerIP[playerid]);
 	// Insert player's information into the MySQL database so we can load it later.
-	mysql_tquery(Database, query, "RegisterPlayer", "i", playerid); // We'll call this as soon as the player successfully registers.
+	mysql_pquery(Database, query, "RegisterPlayer", "i", playerid); // We'll call this as soon as the player successfully registers.
 	return 1;
 }
 
